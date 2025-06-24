@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thunder Browser</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: #0a0e17;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #e0e0e0;
+            background-image: linear-gradient(to bottom, #0a0e17 0%, #1a1e2d 100%);
+        }
+        .search-container {
+            text-align: center;
+            width: 100%;
+            animation: fadeIn 1s ease-in;
+        }
+        .search-box {
+            width: 550px;
+            max-width: 85%;
+            padding: 16px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 35px;
+            outline: none;
+            background: rgba(30, 35, 50, 0.8);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .search-box:hover, .search-box:focus {
+            background: rgba(40, 45, 65, 0.9);
+            box-shadow: 0 6px 20px rgba(65, 120, 255, 0.2);
+        }
+        .title {
+            font-size: 72px;
+            margin-bottom: 15px;
+            color: #4d9be6;
+            text-shadow: 0 0 15px rgba(77, 155, 230, 0.4);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            margin-bottom: 40px;
+            color: #8a9bb8;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        .shortcuts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .shortcut {
+            background: rgba(40, 45, 65, 0.6);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .shortcut:hover {
+            transform: scale(1.1);
+            background: rgba(65, 120, 255, 0.3);
+            box-shadow: 0 6px 15px rgba(65, 120, 255, 0.3);
+        }
+        .shortcut img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <div class="title">THUNDER</div>
+        <div class="subtitle">Lightning-fast private browsing</div>
+        <input type="text" 
+               class="search-box" 
+               placeholder="Search the web..."
+               id="searchInput"
+               onkeypress="handleKeyPress(event)"
+               autofocus>
+        
+        <!-- Shortcuts (Fixed Icons) -->
+        <div class="shortcuts">
+            <div class="shortcut" onclick="window.open('https://discord.com', '_blank')">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
+            </div>
+            <div class="shortcut" onclick="window.open('https://youtube.com', '_blank')">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+            </div>
+            <div class="shortcut" onclick="window.open('https://chat.openai.com', '_blank')">
+                <img src="https://cdn-icons-png.flaticon.com/512/6134/6134346.png" alt="ChatGPT">
+            </div>
+            <div class="shortcut" onclick="window.open('https://deepseek.com', '_blank')">
+                <img src="https://www.deepseek.com/favicon.ico" alt="DeepSeek">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                search();
+            }
+        }
+        
+        function search() {
+            const query = document.getElementById('searchInput').value;
+            if (query.trim() !== '') {
+                window.location.href = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+            }
+        }
+        
+        document.getElementById('searchInput').focus();
+    </script>
+</body>
+</html>
